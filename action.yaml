@@ -22,6 +22,9 @@ inputs:
     required: false
   license:
     description: License key
+    required: false
+  database_env:
+    description: Database  environment
     required: false  
 runs:
   using: docker
@@ -33,6 +36,7 @@ runs:
     FLYWAY_LOCATIONS: ${{ inputs.locations }}
     FLYWAY_INIT_SQL: ${{ inputs.initSql }}
     FLYWAY_LICENSE_KEY: ${{ inputs.license }}
+    DATABASE_ENV: ${{ inputs.database_env }}
   args:
     - migrate
     
