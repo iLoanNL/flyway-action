@@ -20,15 +20,19 @@ inputs:
   initSql:
     description: The SQL statements to run to initialize a new database connection immediately after opening it
     required: false
+  license:
+    description: License key
+    required: false  
 runs:
   using: docker
-  image: docker://flyway/flyway:9
+  image: docker://redgate/flyway:9
   env:
     FLYWAY_URL: ${{ inputs.url }}
     FLYWAY_USER: ${{ inputs.user }}
     FLYWAY_PASSWORD: ${{ inputs.password }}
     FLYWAY_LOCATIONS: ${{ inputs.locations }}
     FLYWAY_INIT_SQL: ${{ inputs.initSql }}
+    FLYWAY_LICENSE_KEY: ${{ inputs.license }}
   args:
     - migrate
     
